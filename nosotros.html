@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Hostal Aruni</title>
+    <link rel="stylesheet" href="css/mainStyles.css">
+    <style>
+    header {
+    display: flex; /* Usar flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre la marca y el logo */
+    align-items: flex-start; /* Alinear verticalmente al inicio */
+    padding: 20px; /* Espaciado alrededor del encabezado */
+}
+
+.contenedor {
+    max-width: 12px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor */
+    display: flex; /* Usar flexbox para alinear elementos dentro del contenedor */
+    justify-content: space-between; /* Espacio entre los elementos */
+    width: 100%; /* Asegurarse de que ocupe todo el ancho */
+}
+
+.marca {
+    flex: auto; /* Permitir que la marca ocupe el espacio disponible */
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+.logo-container {
+    display: flex; /* Usar flexbox para alinear el logo y el botón */
+    flex-direction: column; /* Colocar el logo y el botón en una columna */
+    align-items: flex-end; /* Alinear el logo y el botón a la derecha */
+}
+
+.logo1 {
+    height: 80px; /* Ajustar el tamaño del logo */
+    width: auto; /* Mantener la proporción del logo */
+    margin-bottom: 10px; /* Espacio entre el logo y el botón */
+}
+.boton {
+    display: inline-block;
+    width: 180px; /* Ancho del botón */
+    height: 36px;
+    background-color: #1a0321; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    font: 1rem monospace; /* Fuente del botón */
+    letter-spacing: 3px; /* Espaciado entre letras */
+    text-decoration: none; /* Sin subrayado */
+    object-fit: cover; /* Ajustar imagen si fuera el caso */
+    transition: 0.2s; /* Transición para el hover */
+    text-shadow: 0 0 5px #123844, 0 0 20px #123946; /* Sombra del texto */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor tipo puntero */
+}
+
+.boton:hover {
+    background-color: #0b1b2e; /* Color de fondo al pasar el mouse */
+    color: white; /* Color del texto al pasar el mouse */
+}
+/* Estilo general del cuerpo */
+    .contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.boton-volver {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #4a90e2;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.boton-volver:hover {
+    background-color: #4a90e2;
+    color: white;
+}
+.equipo-container {
+    background-image: url(img/snak_animales.jpg); /* Cambia esta ruta a tu imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    padding: 40px 0; /* Espaciado alrededor del contenido */
+    position: relative; /* Permite que los hijos se posicionen relativos a este contenedor */
+   
+}
+
+
+.equipo {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px; /* Espaciado interno para el equipo */
+    max-width: 1200px; /* Mantiene el ancho máximo del contenido */
+    margin: 0 auto; /* Centra el contenedor */
+    cursor: pointer;
+}
+
+.miembro {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con algo de transparencia */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    margin: 15px; /* Margen entre cuadros */
+    padding: 20px;
+    text-align: center;
+    width: 300px; /* Ancho fijo para los cuadros */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.miembro:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el mouse */
+}
+
+.miembro img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    border: 3px solid #000000; /* Borde azul claro alrededor de la imagen */
+    margin-bottom: 15px; /* Espacio debajo de la imagen */
+}
+
+.miembro h3 {
+    margin: 10px 0 5px; /* Espaciado para el título */
+    color: #287e85; /* Color del título */
+    font-size: 1.5em; /* Tamaño de fuente del título */
+    font-weight: bold; /* Pone el texto en negrita */
+}
+
+.miembro p {
+    margin: 5px 0; /* Espaciado para el texto */
+    line-height: 1.5; /* Espaciado entre líneas */
+    color: #666; /* Color gris para el texto */
+}
+/* Estilo del pie de página */
+footer {
+    background-color: #4a90e2;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.footer-content p {
+    margin: 0;
+    font-size: 0.9em;
+}
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .equipo {
+        flex-direction: column;
+        align-items: center;
+    }
+    .miembro {
+        width: 90%;
+    }
+}
+/* Estilo del pie de página */
+footer {
+    background-color: #4a90e2; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    position: relative; /* Posición relativa */
+    bottom: 0; /* Alinear al fondo */
+    width: 100%; /* Ancho completo */
+    box-shadow: 0 -2px 10px rgba(111, 201, 89, 0.2); /* Sombra superior */
+}
+
+.footer-content {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar el contenido */
+    padding: 0 20px; /* Espaciado lateral */
+}
+
+.footer-content p {
+    margin: 0; /* Sin margen */
+    font-size: 0.9em; /* Tamaño de fuente */
+}
+
+.social-media {
+    margin-top: 10px; /* Espaciado superior */
+}
+
+.social-media a {
+    margin: 0 10px; /* Espaciado lateral entre enlaces */
+}
+
+.social-icon {
+    width: 30px; /* Ancho de los iconos */
+    height: auto; /* Altura automática para mantener la proporción */
+    transition: transform 0.3s; /* Transición suave para el efecto de hover */
+    border-radius: 110%;
+}
+
+.social-icon:hover {
+    transform: scale(1.1); /* Aumentar el tamaño al pasar el mouse */
+}
+    </style>
+</head>
+<body class="">
+    <header>
+        <div class="contenedor">
+            <div class="marca">
+                <h1>
+                    <span>H</span>
+                    <span>O</span>
+                    <span>S</span>
+                    <span>T</span>
+                    <span>A</span>
+                    <span>L</span>
+                    <span>&nbsp;</span>
+                    <span>A</span>
+                    <span>R</span>
+                    <span>U</span>
+                    <span>N</span>
+                    <span>I</span>
+                    <span>&nbsp;</span>
+                </h1>
+                <h4 class="h4">Contamos con un equipo con experiencia listos para atenderte y brindarte lo mejor durante tu estancia.</h4>
+            </div>
+            <div class="logo-container"> <!-- Contenedor para el logo y el botón -->
+                <img class="logo1" src="img/logo.jpeg" alt="">
+                <nav>
+                    <button class="boton" onclick="window.location.href='index.html';">INICIO</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="equipo-container"> <!-- Contenedor para la imagen de fondo -->
+        <section class="equipo">
+            <div class="miembro">
+                <img src="img/gen.webp" alt="Foto de Daniel Aruni, gerente del Hostal Aruni" onerror="this.src='img/gen.jpg'">
+                <h3>Daniel Aruni</h3>
+                <p><b>Gerente</b></p>
+                <p>Con más de 10 años de experiencia en el Hostal Aruni, se asegura de que cada huésped tenga una estancia inolvidable.</p>
+            </div>
+            <div class="miembro">
+                <img src="img/mierda.jpg" alt="Foto de Jeidi Orellana, recepcionista" onerror="this.src='img/rec1.jpg'">
+                <h3>Anabel Calisaya</h3>
+                <p><b>Recepcionista</b></p>
+                <p>Es la primera cara que verás al llegar. Siempre sonriente y dispuesta a ayudar.</p>
+            </div>
+            <div class="miembro">
+                <img src="img/rec2.jpg" alt="Foto de Carlos Daniel, segundo recepcionista" onerror="this.src='img/rec2.jpg'">
+                <h3>Carlos Daniel</h3>
+                <p><b>Segundo Recepcionista</b></p>
+                <p>Se encarga de atender algunas consultas de parte de los hospedados.</p>
+            </div>
+        </section>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Hostal Aruni. Todos los derechos reservados.</p><br>
+            <a href="https://www.google.com/maps/place/HOSTAL+ARUNI/@-16.975477,-65.4256296,974m/data=!3m2!1e3!4b1!4m6!3m5!1s0x93e44300422e3bad:0xe7fd36a9c291f680!8m2!3d-16.975477!4d-65.4230493!16s%2Fg%2F11y6k61nrl!5m1!1e1?entry=ttu&g_ep=EgoyMDI0MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+                UBICACIÓN 📍🏨
+            </a>
+            <div class="social-media">
+                <a href="https://www.facebook.com/profile.php?id=61561018811624" target="_blank" aria-label="Facebook">
+                    <img src="img/face.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@hostal_aruni" target="_blank" aria-label="TikTok">
+                    <img src="img/tikto.png" alt="TikTok" class="social-icon">
+                </a>
+                <a href="https://wa.me/71461131" target="_blank" aria-label="WhatsApp">
+                    <img src="img/warsa.png" alt="WhatsApp" class="social-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

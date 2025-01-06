@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+</head>
+<body>
+    <!-- Habitación Matrimonial Ventilador -->
+    <div class="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg dark:bg-zinc-800">
+        <button class="bg-zinc-500 text-white hover:bg-zinc-600 p-2 rounded-md w-full mb-4">VOLVER</button>
+        <div class="mb-6">
+            <img src="img/matrim_vent.jpg" alt="Room Image" class="w-full rounded-lg mb-2" />
+            <h2 class="text-xl font-bold">Habitación Matrimonial (Ventilador)</h2>
+            <p class="text-zinc-600">2 personas</p>
+            <p class="text-zinc-600">2 camas</p>
+            <div class="flex items-center">
+                <span class="text-red-500 mr-1">¡</span>
+                <span class="text-sm text-zinc-600">Niños menores de 13 años entran gratis</span>
+                <button class="ml-2 text-blue-500 underline" onclick="alert('Niños menores de 13 años pueden entrar gratis, si cuentan como 4ta personas, sin embargo si cuenta como 3ra persona paga un la mitad al de un adulto ')">Más información</button>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-semibold">Servicios:</h3>
+            <ul class="list-disc ml-5 text-zinc-600">
+                <li>wifi</li>
+                <li>baño privado</li>
+                <li>parqueo</li>
+                <li>tv smart</li>
+                <li>ducha frío/caliente</li>
+            </ul>
+            <p class="font-bold text-lg">Bs. 120</p>
+            <p class="text-green-500">Disponible</p>
+        </div>
+        <button onclick="document.getElementById('data-form-matrimonial-ven').classList.toggle('hidden');" class="bg-blue-500 text-white p-2 rounded-md w-full mb-4">Reservar</button>
+
+        <div id="data-form-matrimonial-ven" class="hidden p-4 bg-zinc-100 rounded-lg">
+            <h4 class="text-lg font-semibold">INTRODUCE TUS DATOS</h4>
+            <p class="text-red-600">¡Ya casi está! Llena los campos.</p>
+            <form id="booking-form-matrimonial-ven" action="reserva.php" method="post" class="flex flex-col">
+                <input type="hidden" name="habitacion_id" value="1">
+                <input type="text"  name="nombre" placeholder="Nombre" class="mb-2 p-2 border rounded" />
+                <input type="text" name="apellido" required placeholder="Apellido" class="mb-2 p-2 border rounded" />
+                <input type="email" name="email" required placeholder="E-mail" class="mb-2 p-2 border rounded" />
+                <input type="text" name="ci" required placeholder="CI" class="mb-2 p-2 border rounded" />
+                <input type="tel" name="telefono" required placeholder="Teléfono" class="mb-2 p-2 border rounded" />
+
+                <div class="flex justify-between">
+                    <button type="submit" name="pago_porcentaje" value="50" onclick="displayQRCode('50%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 50%</button>
+                    <button type="submit"  name="pago_porcentaje" value="100" onclick="displayQRCode('100%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 100%</button>
+                </div>
+                <p class="text-transparent">PAGO POR QR</p>
+            </form>
+        </div>
+        <div id="qr-code-matrimonial-ven" class="hidden my-4 text-center">
+            <img src="https://placehold.co/150x150" alt="QR Code" />
+        </div>
+    </div>
+
+    <!-- Habitación Doble Ventilador -->
+    <div class="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg dark:bg-zinc-800 mt-6">
+        <button class="bg-zinc-500 text-white hover:bg-zinc-600 p-2 rounded-md w-full mb-4">VOLVER</button>
+        <div class="mb-6">
+            <img src="img/doble_ven.jpeg" alt="Room Image" class="w-full rounded-lg mb-2" />
+            <h2 class="text-xl font-bold">Habitación Doble (Ventilador)</h2>
+            <p class="text-zinc-600">3 personas</p>
+            <p class="text-zinc-600">2 camas (1 matrimonial y 1 de plaza y media)</p>
+            <div class="flex items-center">
+                <span class="text-red-500 mr-1">¡</span>
+                <span class="text-sm text-zinc-600">Niños menores de 13 años entran gratis</span>
+                <button class="ml-2 text-blue-500 underline" onclick="alert('Niños menores de 13 años pueden entrar gratis, si cuentan como 4ta personas, sin embargo si cuenta como 3ra persona paga un la mitad al de un adulto ')">Más información</button>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-semibold">Servicios:</h3>
+            <ul class="list-disc ml-5 text-zinc-600">
+                <li>wifi</li>
+                <li>baño privado</li>
+                <li>parqueo</li>
+                <li>tv smart</li>
+                <li>ducha frío/caliente</li>
+            </ul>
+            <p class="font-bold text-lg">Bs. 180</p>
+            <p class="text-green-500">Disponible</p>
+        </div>
+        <button onclick="document.getElementById('data-form-doble-ven').classList.toggle('hidden');" class="bg-blue-500 text-white p-2 rounded-md w-full mb-4">Reservar</button>
+
+        <div id="data-form-doble-ven" class="hidden p-4 bg-zinc-100 rounded-lg">
+            <h4 class="text-lg font-semibold">INTRODUCE TUS DATOS</h4>
+            <p class="text-red-600">¡Ya casi está! Llena los campos.</p>
+            <form id="booking-form-matrimonial-ven" action="reserva.php" method="post" class="flex flex-col">
+                <input type="hidden" name="habitacion_id" value="2">
+                <input type="text"  name="nombre" placeholder="Nombre" class="mb-2 p-2 border rounded" />
+                <input type="text" name="apellido" required placeholder="Apellido" class="mb-2 p-2 border rounded" />
+                <input type="email" name="email" required placeholder="E-mail" class="mb-2 p-2 border rounded" />
+                <input type="text" name="ci" required placeholder="CI" class="mb-2 p-2 border rounded" />
+                <input type="tel" name="telefono" required placeholder="Teléfono" class="mb-2 p-2 border rounded" />
+
+                <div class="flex justify-between">
+                    <button type="submit" name="pago_porcentaje" value="50" onclick="displayQRCode('50%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 50%</button>
+                    <button type="submit"  name="pago_porcentaje" value="100" onclick="displayQRCode('100%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 100%</button>
+                </div>
+                <p class="text-transparent">PAGO POR QR</p>
+            </form>
+        </div>
+        <div id="qr-code-doble-ven" class="hidden my-4 text-center">
+            <img src="https://placehold.co/150x150" alt="QR Code" />
+        </div>
+    </div>
+
+    <!-- Habitación Triple Ventilador -->
+    <div class="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg dark:bg-zinc-800 mt-6">
+        <button class="bg-zinc-500 text-white hover:bg-zinc-600 p-2 rounded-md w-full mb-4">VOLVER</button>
+        <div class="mb-6">
+            <img src="img/triple_vent.jpg" alt="Room Image" class="w-full rounded-lg mb-2" />
+            <h2 class="text-xl font-bold">Habitación Triple (Ventilador)</h2>
+            <p class="text-zinc-600">4 personas</p>
+            <p class="text-zinc-600">3 camas (1 de 2 plazas y 2 de 1/2 media)</p>
+            <div class="flex items-center">
+                <span class="text-red-500 mr-1">¡</span>
+                <span class="text-sm text-zinc-600">Niños menores de 13 años entran gratis</span>
+                <button class="ml-2 text-blue-500 underline" onclick="alert('Niños menores de 13 años pueden entrar gratis, si cuentan como 4ta personas, sin embargo si cuenta como 3ra persona paga un la mitad al de un adulto ')">Más información</button>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-semibold">Servicios:</h3>
+            <ul class="list-disc ml-5 text-zinc-600">
+                <li>wifi</li>
+                <li>baño privado</li>
+                <li>parqueo</li>
+                <li>tv smart</li>
+                <li>ducha frío/caliente</li>
+            </ul>
+            <p class="font-bold text-lg">Bs. 230</p>
+            <p class="text-green-500">Disponible</p>
+        </div>
+        <button onclick="document.getElementById('data-form-triple-ven').classList.toggle('hidden');" class="bg-blue-500 text-white p-2 rounded-md w-full mb-4">Reservar</button>
+
+        <div id="data-form-triple-ven" class="hidden p-4 bg-zinc-100 rounded-lg">
+            <h4 class="text-lg font-semibold">INTRODUCE TUS DATOS</h4>
+            <p class="text-red-600">¡Ya casi está! Llena los campos.</p>
+            <form id="booking-form-matrimonial-ven" action="reserva.php" method="post" class="flex flex-col">
+                <input type="hidden" name="habitacion_id" value="3">
+                <input type="text"  name="nombre" placeholder="Nombre" class="mb-2 p-2 border rounded" />
+                <input type="text" name="apellido" required placeholder="Apellido" class="mb-2 p-2 border rounded" />
+                <input type="email" name="email" required placeholder="E-mail" class="mb-2 p-2 border rounded" />
+                <input type="text" name="ci" required placeholder="CI" class="mb-2 p-2 border rounded" />
+                <input type="tel" name="telefono" required placeholder="Teléfono" class="mb-2 p-2 border rounded" />
+                <div class="flex justify-between">
+                    <button type="submit" name="pago_porcentaje" value="50" onclick="displayQRCode('50%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 50%</button>
+                    <button type="submit"  name="pago_porcentaje" value="100" onclick="displayQRCode('100%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 100%</button>
+                </div>
+                <p class="text-transparent">PAGO POR QR</p>
+            </form>
+        </div>
+        <div id="qr-code-doble-ven" class="hidden my-4 text-center">
+            <img src="https://placehold.co/150x150" alt="QR Code" />
+        </div>
+    </div>
+    <!-- Habitación Cuádruple Ventilador -->
+<div class="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg dark:bg-zinc-800 mt-6">
+  <button class="bg-zinc-500 text-white hover:bg-zinc-600 p-2 rounded-md w-full mb-4">VOLVER</button>
+  <div class="mb-6">
+      <img src="img/cuadruple_vent.jpg" alt="Room Image" class="w-full rounded-lg mb-2" />
+      <h2 class="text-xl font-bold">Habitación Cuádruple (Ventilador)</h2>
+      <p class="text-zinc-600">6 personas</p>
+      <p class="text-zinc-600">4 camas (2 de 2 plazas y 2 de 1/2 media)</p>
+      <div class="flex items-center">
+          <span class="text-red-500 mr-1">¡</span>
+          <span class="text-sm text-zinc-600">Niños menores de 13 años entran gratis</span>
+          <button class="ml-2 text-blue-500 underline" onclick="alert('Niños menores de 13 años pueden entrar gratis, si cuentan como 4ta personas, sin embargo si cuenta como 3ra persona paga un la mitad al de un adulto ')">Más información</button>
+      </div>
+  </div>
+  <div class="mb-4">
+      <h3 class="font-semibold">Servicios:</h3>
+      <ul class="list-disc ml-5 text-zinc-600">
+          <li>wifi</li>
+          <li>baño privado</li>
+          <li>parqueo</li>
+          <li>tv smart</li>
+          <li>ducha frío/caliente</li>
+      </ul>
+      <p class="font-bold text-lg">Bs. 350</p>
+      <p class="text-green-500">Disponible</p>
+  </div>
+  <button onclick="document.getElementById('data-form-cuadruple-ven').classList.toggle('hidden');" class="bg-blue-500 text-white p-2 rounded-md w-full mb-4">Reservar</button>
+
+  <div id="data-form-cuadruple-ven" class="hidden p-4 bg-zinc-100 rounded-lg">
+      <h4 class="text-lg font-semibold">INTRODUCE TUS DATOS</h4>
+      <p class="text-red-600">¡Ya casi está! Llena los campos.</p>
+      <form id="booking-form-matrimonial-ven" action="reserva.php" method="post" class="flex flex-col">
+        <input type="hidden" name="habitacion_id" value="4">
+        <input type="text"  name="nombre" placeholder="Nombre" class="mb-2 p-2 border rounded" />
+        <input type="text" name="apellido" required placeholder="Apellido" class="mb-2 p-2 border rounded" />
+        <input type="email" name="email" required placeholder="E-mail" class="mb-2 p-2 border rounded" />
+        <input type="text" name="ci" required placeholder="CI" class="mb-2 p-2 border rounded" />
+        <input type="tel" name="telefono" required placeholder="Teléfono" class="mb-2 p-2 border rounded" />
+        <div class="flex justify-between">
+            <button type="submit" name="pago_porcentaje" value="50" onclick="displayQRCode('50%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 50%</button>
+            <button type="submit"  name="pago_porcentaje" value="100" onclick="displayQRCode('100%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 100%</button>
+        </div>
+          <p class="text-transparent">PAGO POR QR</p>
+      </form>
+  </div>
+  <div id="qr-code-cuadruple-ven" class="hidden my-4 text-center">
+      <img src="https://placehold.co/150x150" alt="QR Code" />
+  </div>
+</div>
+
+<!-- Habitación Matrimonial Aire Acondicionado -->
+<div class="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg dark:bg-zinc-800 mt-6">
+  <button class="bg-zinc-500 text-white hover:bg-zinc-600 p-2 rounded-md w-full mb-4">VOLVER</button>
+  <div class="mb-6">
+      <img src="img/matrimonial_aire.jpg" alt="Room Image" class="w-full rounded-lg mb-2" />
+      <h2 class="text-xl font-bold">Habitación Matrimonial (Aire Acondicionado)</h2>
+      <p class="text-zinc-600">2 personas</p>
+      <p class="text-zinc-600">2 camas</p>
+      <div class="flex items-center">
+          <span class="text-red-500 mr-1">¡</span>
+          <span class="text-sm text-zinc-600">Niños menores de 13 años entran gratis</span>
+          <button class="ml-2 text-blue-500 underline" onclick="alert('Niños menores de 13 años pueden entrar gratis, si cuentan como 4ta personas, sin embargo si cuenta como 3ra persona paga un la mitad al de un adulto ')">Más información</button>
+      </div>
+  </div>
+  <div class="mb-4">
+      <h3 class="font-semibold">Servicios:</h3>
+      <ul class="list-disc ml-5 text-zinc-600">
+          <li>wifi</li>
+          <li>baño privado</li>
+          <li>parqueo</li>
+          <li>tv smart</li>
+          <li>ducha frío/caliente</li>
+          <li>aire acondicionado</li>
+      </ul>
+      <p class="font-bold text-lg">Bs. 200</p>
+      <p class="text-green-500">Disponible</p>
+  </div>
+  <button onclick="document.getElementById('data-form-matrimonial-ac').classList.toggle('hidden');" class="bg-blue-500 text-white p-2 rounded-md w-full mb-4">Reservar</button>
+
+  <div id="data-form-matrimonial-ac" class="hidden p-4 bg-zinc-100 rounded-lg">
+      <h4 class="text-lg font-semibold">INTRODUCE TUS DATOS</h4>
+      <p class="text-red-600">¡Ya casi está! Llena los campos.</p>
+      <form id="booking-form-matrimonial-ven" action="reserva.php" method="post" class="flex flex-col">
+        <input type="hidden" name="habitacion_id" value="5">
+        <input type="text"  name="nombre" placeholder="Nombre" class="mb-2 p-2 border rounded" />
+        <input type="text" name="apellido" required placeholder="Apellido" class="mb-2 p-2 border rounded" />
+        <input type="email" name="email" required placeholder="E-mail" class="mb-2 p-2 border rounded" />
+        <input type="text" name="ci" required placeholder="CI" class="mb-2 p-2 border rounded" />
+        <input type="tel" name="telefono" required placeholder="Teléfono" class="mb-2 p-2 border rounded" />
+        <div class="flex justify-between">
+            <button type="submit" name="pago_porcentaje" value="50" onclick="displayQRCode('50%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 50%</button>
+            <button type="submit"  name="pago_porcentaje" value="100" onclick="displayQRCode('100%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 100%</button>
+        </div>
+          <p class="text-transparent">PAGO POR QR</p>
+      </form>
+  </div>
+  <div id="qr-code-matrimonial-ac" class="hidden my-4 text-center">
+      <img src="https://placehold.co/150x150" alt="QR Code" />
+  </div>
+</div>
+
+<!-- Habitación Doble Aire Acondicionado -->
+<div class="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg dark:bg-zinc-800 mt-6">
+  <button class="bg-zinc-500 text-white hover:bg-zinc-600 p-2 rounded-md w-full mb-4">VOLVER</button>
+  <div class="mb-6">
+      <img src="img/doble_aire - copia.jpg" alt="Room Image" class="w-full rounded-lg mb-2" />
+      <h2 class="text-xl font-bold">Habitación Doble (Aire Acondicionado)</h2>
+      <p class="text-zinc-600">3 personas</p>
+      <p class="text-zinc-600">2 camas (1 matrimonial y 1 de plaza y media)</p>
+      <div class="flex items-center">
+          <span class="text-red-500 mr-1">¡</span>
+          <span class="text-sm text-zinc-600">Niños menores de 13 años entran gratis</span>
+          <button class="ml-2 text-blue-500 underline" onclick="alert('Niños menores de 13 años pueden entrar gratis, si cuentan como 4ta personas, sin embargo si cuenta como 3ra persona paga un la mitad al de un adulto ')">Más información</button>
+      </div>
+  </div>
+  <div class="mb-4">
+      <h3 class="font-semibold">Servicios:</h3>
+      <ul class="list-disc ml-5 text-zinc-600">
+          <li>wifi</li>
+          <li>baño privado</li>
+          <li>parqueo</li>
+          <li>tv smart</li>
+          <li>ducha frío/caliente</li>
+          <li>aire acondicionado</li>
+      </ul>
+      <p class="font-bold text-lg">Bs. 300</p>
+      <p class="text-green-500">Disponible</p>
+  </div>
+  <button onclick="document.getElementById('data-form-doble-ac').classList.toggle('hidden');" class="bg-blue-500 text-white p-2 rounded-md w-full mb-4">Reservar</button>
+
+  <div id="data-form-doble-ac" class="hidden p-4 bg-zinc-100 rounded-lg">
+      <h4 class="text-lg font-semibold">INTRODUCE TUS DATOS</h4>
+      <p class="text-red-600">¡Ya casi está! Llena los campos.</p>
+      <form id="booking-form-matrimonial-ven" action="reserva.php" method="post" class="flex flex-col">
+        <input type="hidden" name="habitacion_id" value="6">
+        <input type="text"  name="nombre" placeholder="Nombre" class="mb-2 p-2 border rounded" />
+        <input type="text" name="apellido" required placeholder="Apellido" class="mb-2 p-2 border rounded" />
+        <input type="email" name="email" required placeholder="E-mail" class="mb-2 p-2 border rounded" />
+        <input type="text" name="ci" required placeholder="CI" class="mb-2 p-2 border rounded" />
+        <input type="tel" name="telefono" required placeholder="Teléfono" class="mb-2 p-2 border rounded" />
+        <div class="flex justify-between">
+            <button type="submit" name="pago_porcentaje" value="50" onclick="displayQRCode('50%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 50%</button>
+            <button type="submit"  name="pago_porcentaje" value="100" onclick="displayQRCode('100%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 100%</button>
+        </div>
+            <p class="text-transparent">PAGO POR QR</p>
+        </form>
+    </div>
+    <div id="qr-code-matrimonial-ac" class="hidden my-4 text-center">
+        <img src="https://placehold.co/150x150" alt="QR Code" />
+    </div>
+  </div>
+  <!-- Habitación Triple Aire Acondicionado -->
+<div class="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg dark:bg-zinc-800 mt-6">
+  <button class="bg-zinc-500 text-white hover:bg-zinc-600 p-2 rounded-md w-full mb-4">VOLVER</button>
+  <div class="mb-6">
+      <img src="img/triple_aire.jpg" alt="Room Image" class="w-full rounded-lg mb-2" />
+      <h2 class="text-xl font-bold">Habitación Triple (Aire Acondicionado)</h2>
+      <p class="text-zinc-600">4 personas</p>
+      <p class="text-zinc-600">3 camas (1 de 2 plazas y 2 de 1/2 media)</p>
+      <div class="flex items-center">
+          <span class="text-red-500 mr-1">¡</span>
+          <span class="text-sm text-zinc-600">Niños menores de 13 años entran gratis</span>
+          <button class="ml-2 text-blue-500 underline" onclick="alert('Niños menores de 13 años pueden entrar gratis, si cuentan como 4ta personas, sin embargo si cuenta como 3ra persona paga un la mitad al de un adulto ')">Más información</button>
+      </div>
+  </div>
+  <div class="mb-4">
+      <h3 class="font-semibold">Servicios:</h3>
+      <ul class="list-disc ml-5 text-zinc-600">
+          <li>wifi</li>
+          <li>baño privado</li>
+          <li>parqueo</li>
+          <li>tv smart</li>
+          <li>ducha frío/caliente</li>
+          <li>aire acondicionado</li>
+      </ul>
+      <p class="font-bold text-lg">Bs. 400</p>
+      <p class="text-green-500">Disponible</p>
+  </div>
+  <button onclick="document.getElementById('data-form-triple-ac').classList.toggle('hidden');" class="bg-blue-500 text-white p-2 rounded-md w-full mb-4">Reservar</button>
+
+  <div id="data-form-triple-ac" class="hidden p-4 bg-zinc-100 rounded-lg">
+      <h4 class="text-lg font-semibold">INTRODUCE TUS DATOS</h4>
+      <p class="text-red-600">¡Ya casi está! Llena los campos.</p>
+      <form id="booking-form-matrimonial-ven" action="reserva.php" method="post" class="flex flex-col">
+        <input type="hidden" name="habitacion_id" value="7">
+        <input type="text"  name="nombre" placeholder="Nombre" class="mb-2 p-2 border rounded" />
+        <input type="text" name="apellido" required placeholder="Apellido" class="mb-2 p-2 border rounded" />
+        <input type="email" name="email" required placeholder="E-mail" class="mb-2 p-2 border rounded" />
+        <input type="text" name="ci" required placeholder="CI" class="mb-2 p-2 border rounded" />
+        <input type="tel" name="telefono" required placeholder="Teléfono" class="mb-2 p-2 border rounded" />
+        <div class="flex justify-between">
+            <button type="submit" name="pago_porcentaje" value="50" onclick="displayQRCode('50%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 50%</button>
+            <button type="submit"  name="pago_porcentaje" value="100" onclick="displayQRCode('100%')" class="bg-green-500 text-white p-2 rounded md:w-1/2">Pago 100%</button>
+        </div>
+          <p class="text-transparent">PAGO POR QR</p>
+      </form>
+  </div>
+  <div id="qr-code-triple-ac" class="hidden my-4 text-center">
+      <img src="https://placehold.co/150x150" alt="QR Code" />
+  </div>
+</div>
+
+<!-- Código JavaScript -->
+<script>
+  window.tailwind.config = {
+      darkMode: ['class'],
+      theme: {
+          extend: {
+              colors: {
+                  border: 'hsl(var(--border))',
+                  input: 'hsl(var(--input))',
+                  ring: 'hsl(var(--ring))',
+                  background: 'hsl(var(--background))',
+                  foreground: 'hsl(var(--foreground))',
+                  primary: {
+                      DEFAULT: 'hsl(var(--primary))',
+                      foreground: 'hsl(var(--primary-foreground))'
+                  },
+                  secondary: {
+                      DEFAULT: 'hsl(var(--secondary))',
+                      foreground: 'hsl(var(--secondary-foreground))'
+                  },
+                  muted: {
+                      DEFAULT: 'hsl(var(--muted))',
+                      foreground: 'hsl(var(--muted-foreground))'
+                  },
+                  accent: {
+                      DEFAULT: 'hsl(var(--accent))',
+                      foreground: 'hsl(var(--accent-foreground))'
+                  },
+                  destructive: {
+                      DEFAULT: 'hsl(var(--destructive))',
+                      foreground: 'hsl(var(--destructive-foreground))'
+                  },
+                  popover: {
+                      DEFAULT: 'hsl(var(--popover))',
+                      foreground: 'hsl(var(--popover-foreground))'
+                  },
+                  card: {
+                      DEFAULT: 'hsl(var(--card))',
+                      foreground: 'hsl(var(--card-foreground))'
+                  },
+              }
+          }
+      }
+  }
+
+  function displayQRCode(payment) {
+      const qrCodeImg = document.getElementById('qr-code');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+
+  function displayQRCodeMatrimonialVen(payment) {
+      const qrCodeImg = document.getElementById('qr-code-matrimonial-ven');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+
+  function displayQRCodeDobleVen(payment) {
+      const qrCodeImg = document.getElementById('qr-code-doble-ven');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+
+  function displayQRCodeTripleVen(payment) {
+      const qrCodeImg = document.getElementById('qr-code-triple-ven');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+
+  function displayQRCodeCuadrupleVen(payment) {
+      const qrCodeImg = document.getElementById('qr-code-cuadruple-ven');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+
+  function displayQRCodeMatrimonialAC(payment) {
+      const qrCodeImg = document.getElementById('qr-code-matrimonial-ac');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+
+  function displayQRCodeDobleAC(payment) {
+      const qrCodeImg = document.getElementById('qr-code-doble-ac');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+
+  function displayQRCodeTripleAC(payment) {
+      const qrCodeImg = document.getElementById('qr-code-triple-ac');
+      qrCodeImg.classList.remove('hidden');
+      qrCodeImg.querySelector('img').src = `https://placehold.co/150x150?text=QR+for+${payment}`;
+  }
+</script>
+</body>
+</html>

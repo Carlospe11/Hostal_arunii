@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de inicio de sesión</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .wrapper {
+            width: 400px;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .input-field {
+            margin-bottom: 25px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            autocomplete="off"
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        .back-link i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="back-link">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
+        </div>
+        <form action="conectar.php" method="post" id="loginForm">
+            <h2>Inicio de sesión</h2>
+            <div class="input-field">
+                <input type="text" name="n" id="username" autocomplete="off">
+                <label for="n">Ingresa tu nombre</label>
+            </div>
+            <div class="input-field">
+                <input type="password" name="p" id="password" autocomplete="off">
+                <label for="p">Ingresa tu contraseña</label>
+            </div>
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+
+    <script>
+        // Limpiar los campos de entrada al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        });
+    </script>
+</body>
+</html>

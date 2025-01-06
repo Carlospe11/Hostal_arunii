@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 1</title>
+    <link rel="stylesheet" href="./css/mainStyles.css">
+    <link rel="stylesheet" href="https://unpkg.com/lucide-icons/dist/umd/lucide-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/lucide-css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="contenedor">
+        <img class="logo" src="img/logo.jpeg" alt="">
+        <div class="marca">
+            <h1>
+                <span>H</span>
+                <span>O</span>
+                <span>S</span>
+                <span>T</span>
+                <span>A</span>
+                <span>L</span>
+                <span>&nbsp;</span>
+                <span>A</span>
+                <span>R</span>
+                <span>U</span>
+                <span>N</span>
+                <span>I</span>
+                <span>&nbsp;</span>
+            </h1>
+            <h4 class="h4">"Bienvenido a tu segundo hogar"</h4>
+        </div>
+        <nav>
+            <a href="nosotros.html" class="boton">Nosotros</a>
+            <button class="boton" onclick="window.location.href='ingresar_pin.html';">ADMIN</button>
+            <button class="boton" onclick="toggleMenu()">MENU</button>
+            <div style="height: 5px;"></div>
+            <div id="submenu" class="submenu" style="display: none;">
+                <button class="boton" onclick="showSection('portafolio')">Portafolio</button>
+                <button class="boton" onclick="showSection('servicios')">Servicios</button>
+                <button class="boton" onclick="showSection('novedades')">Novedades</button>
+                <button class="boton" onclick="showSection('ubicaciones')">Ubicaciones</button>
+            </div>
+        </nav>
+    </div>
+</header>
+<script>
+  function toggleMenu() {
+      const submenu = document.getElementById('submenu');
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function showSection(section) {
+      let targetSection;
+
+      // Determinar la sección a la que desplazarse
+      if (section === 'portafolio') {
+          targetSection = document.getElementById('portafolio');
+      } 
+      else if (section === 'servicios') {
+          targetSection = document.getElementById('servicios');
+      }
+      if (section === 'novedades') {
+          targetSection = document.getElementById('novedades');
+      }
+      if (section === 'ubicaciones') {
+          targetSection = document.getElementById('ubicaciones');
+      }
+    
+      // Comprobar si la sección objetivo existe y desplazarse a ella
+      if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave
+      } else {
+          console.log(`Sección no encontrada: ${section}`);
+      }
+  }
+</script>
+<section id="cabecera">
+  <div class="video-background">
+      <video autoplay muted loop>
+          <source src="../proyecto/video/videohostal.mp4" type="video/mp4">
+      </video>
+  </div>
+  <div class="contenedor">
+      <h1 class="h1a">BANDEJA</h1>
+  </div>
+  <form class="formulario" action="filtro.php" method="post">
+      <div>
+          <label for="origen" class="text">¿De dónde vienes?</label><br>
+          <select id="countries" class="lugar" name="origen">
+              <option value="" selected disabled>Seleccione un país</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Bolivia">Bolivia</option>
+              <option value="Brazil">Brasil</option>
+              <option value="Chile">Chile</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Ecuador">Ecuador</option>
+              <option value="Guyana">Guyana</option>
+              <option value="Paraguay">Paraguay</option>
+              <option value="Peru">Peru</option>
+              <option value="Suriname">Suriname</option>
+              <option value="Uruguay">Uruguay</option>
+              <option value="Venezuela">Venezuela</option>
+          </select>
+          <select id="departments" class="lugar" style="display: none;">
+              <option value="" selected disabled>Seleccione un departamento</option>
+          </select>
+          <script>
+              document.getElementById("countries").addEventListener("change", function() {
+                  if (this.value === "Bolivia") {
+                      document.getElementById("departments").style.display = "block";
+                      var departments = [
+                          "Beni",
+                          "Chuquisaca",
+                          "Cochabamba",
+                          "La Paz",
+                          "Oruro",
+                          "Pando",
+                          "Potosí",
+                          "Santa Cruz",
+                          "Tarija"
+                      ];
+                      var departmentSelect = document.getElementById("departments");
+                      departmentSelect.innerHTML = "";
+                      for (var i = 0; i < departments.length; i++) {
+                          var option = document.createElement("option");
+                          option.value = departments[i];
+                          option.text = departments[i];
+                          departmentSelect.add(option);
+                      }
+                  } else {
+                      document.getElementById("departments").style.display = "none";
+                  }
+              });
+          </script>
+      </div>
+      <div>
+          <label for="fecha_entrada" class="text">Fecha de ingreso</label><br>
+          <input type="date" id="fecha-ingreso" class="lugar" name="fecha_entrada">
+      </div>
+      <div>
+          <label for="fecha_salida" class="text">Fecha de salida</label><br>
+          <input type="date" id="fecha-salida" class="lugar" name="fecha_salida">
+      </div>
+      <div>
+          <label class="text">¿Cuántas personas son?</label><br>
+          <input type="number" id="adultos" placeholder="Adultos" class="lugar" name="adultos" min="0">
+          <input type="number" id="ninos" placeholder="Niños" class="lugar" name="menores">
+          <select name="acondicionador" class="habitaciones">
+              <option value="" selected disabled>Tipo de acondicionador</option>
+              <option value="Ventilador">Ventiladora</option>
+              <option value="Aire">Aire Acondicionado</option>
+          </select>
+          <div id="edad-ninos" style="display: none;">
+              <label class="text">Edad de los niños:</label><br>
+              <div id="edad-ninos-container"></div>
+          </div>
+      </div>
+      <button type="submit" class="boton1">
+          <span id="span1"></span>
+          <span id="span2"></span>
+          <span id="span3"></span>
+          <span id="span4"></span>
+          Buscar
+      </button>
+  </form>
+  <form class="formulario" action="lista.php" method="post">
+      <button type="submit" class="boton">
+          Habitaciones
+      </button>
+  </form>
+</section>
+              <script>
+              const numeroNinos = document.getElementById('ninos');
+              const edadNinos = document.getElementById('edad-ninos');
+              const edadNinosContainer = document.getElementById('edad-ninos-container');
+            
+              numeroNinos.addEventListener('input', () => {
+                const valor = parseInt(numeroNinos.value);
+                if (valor > 0) {
+                  edadNinos.style.display = 'block';
+                  edadNinosContainer.innerHTML = '';
+                  for (let i = 1; i <= valor; i++) {
+                    const inputEdad = document.createElement('input');
+                    inputEdad.type = 'number';
+                    inputEdad.placeholder = `Edad del niño ${i}`;
+                    inputEdad.className = 'lugar';
+                    edadNinosContainer.appendChild(inputEdad);
+                    edadNinosContainer.appendChild(document.createElement('br'));
+                  }
+                } else {
+                  edadNinos.style.display = 'none';
+                }
+              });
+               // Validación del formulario antes de enviar
+    document.querySelector('.formulario').addEventListener('submit', function(event) {
+      const numeroAdultos = document.getElementById('adultos').value;
+      if (numeroAdultos < 1) {
+        alert('Por favor, ingrese al menos un adulto.');
+        event.preventDefault(); // Evita el envío del formulario
+      }
+    });
+    
+            </script>
+            <script>
+              // Validación del formulario antes de enviar
+              document.querySelector('.formulario').addEventListener('submit', function(event) {
+                const numeroAdultos = document.getElementById('adultos').value;
+                const fechaIngreso = document.getElementById('fecha-ingreso').value;
+                const fechaSalida = document.getElementById('fecha-salida').value;
+            
+                if (numeroAdultos < 1) {
+                  alert('Por favor, ingrese al menos un adulto.');
+                  event.preventDefault(); // Evita el envío del formulario
+                }
+            
+                if (fechaSalida <= fechaIngreso) {
+                  alert('La fecha de salida debe ser posterior a la fecha de ingreso.');
+                  event.preventDefault(); // Evita el envío del formulario
+                }
+              });
+            </script>
+    <section class="boletin">
+            <p class="p2">La gerencia y el personal nos complacemos en ser sus anfitriones. Espero poder demostrar todos los servicios que hacen de <b>HOSTAL ARUNI</b> un alojamiento</p>
+        </div>
+      </section>
+      <section id="portafolio">
+        <h1 class="portafolio">PORTAFOLIO</h1><br>
+        <div class="container">
+            <div class="caja" onclick="zoomImage(this)">
+                <img src="img/cara.jpeg" alt="Imagen 1"><br>
+                <p class="title">Cara Principal</p>
+            </div>
+            <div class="caja" onclick="zoomImage(this)">
+                <img src="img/salonarriba.jpeg" alt="Imagen 2"><br>
+                <p class="title">Salon de la Terraza</p>
+            </div>
+            <div class="caja" onclick="zoomImage(this)">
+                <img src="img/picina1.jpeg" alt="Imagen 3"><br>
+                <p class="title">Vista superior de la piscina</p>
+            </div>
+            <div class="caja" onclick="zoomImage(this)">
+                <img src="img/picina.jpeg" alt="Imagen 4"><br>
+                <p class="title">Vista inferior de la piscina</p>
+            </div>
+            <div class="caja" onclick="zoomImage(this)">
+                <img src="img/snack.jpeg" alt="Imagen 5"><br>
+                <p class="title">Snack</p>
+            </div>
+            <div class="caja" onclick="zoomImage(this)">
+                <img src="img/toro.jpeg" alt="Imagen 6"><br>
+                <p class="title">Salon de arriba</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal para el zoom -->
+    <div id="zoom-modal" class="modal">
+        <span class="close" onclick="closeZoom()">&times;</span>
+        <img id="zoomed-image" class="modal-content">
+    </div>
+    
+    <!-- Código JavaScript -->
+    <script>
+        function zoomImage(element) {
+            const modal = document.getElementById("zoom-modal");
+            const modalImg = document.getElementById("zoomed-image");
+            const imgSrc = element.querySelector("img").src;
+    
+            modal.style.display = "flex"; // Cambiar a flex para asegurar que se muestre en el centro
+            modalImg.src = imgSrc;
+        }
+    
+        function closeZoom() {
+            const modal = document.getElementById("zoom-modal");
+            modal.style.display = "none";
+        }
+    
+        // Cerrar el modal al hacer clic en cualquier parte
+        window.onclick = function(event) {
+            const modal = document.getElementById("zoom-modal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    
+        // Ocultar el modal al cargar la página
+        window.onload = function() {
+            const modal = document.getElementById("zoom-modal");
+            modal.style.display = "none";
+        };
+    </script>
+    
+<section id="servicios">
+<div class="bg-background p-8">
+  <h1 class="portafolio">Servicios ofrecidos</h1>
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-wifi service-icon'></i>
+      <p class="text-foreground">Wi-Fi</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bxs-car-garage service-icon'></i>
+      <p class="text-foreground">Estacionamiento</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-shower service-icon'></i>
+      <p class="text-foreground">Ducha caliente/fría</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-wind service-icon' ></i>
+      <p class="text-foreground">Habit. con Aire acondicionado</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bxl-slack service-icon'></i>
+      <p class="text-foreground">Habit. con Ventiladora</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-water service-icon'></i>
+      <p class="text-foreground">Piscina</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-tv service-icon'></i>
+      <p class="text-foreground">Tv Smart</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-coffee service-icon'></i>
+      <p class="text-foreground">Desayuno</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bxs-party service-icon'></i>
+      <p class="text-foreground">Salas de eventos</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-cookie service-icon'></i>
+      <p class="text-foreground">Snack</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-support service-icon'></i>
+      <p class="text-foreground">Atención 24/7</p>
+    </div>
+    <div class="text-center bg-card p-4 rounded-lg">
+      <i class='bx bx-briefcase-alt service-icon'></i>
+      <p class="text-foreground">Guarda equipaje</p>
+    </div>
+  </div>
+</div>
+</section>
+<style>
+/* Title */
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 3rem;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columnas */
+    grid-template-columns: repeat(3, minmax(413px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+/* Card Styles */
+.card {
+    position: relative;
+    height: 300px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+}
+
+.card:hover .overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.card-content {
+    position: relative;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+}
+
+h3 {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Button Styles */
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a1a;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+.button:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.button-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<section id="novedades">
+<h1 class="portafolio">NOVEDADES</h1>
+<div class="container">
+  
+
+  <div class="grid">
+      <!-- Habitaciones Card -->
+      <div class="card">
+          <div class="card-bg" style="background-image: url('img/HABITACIONES.png')">
+              <div class="overlay"></div>
+          </div>
+          <div class="card-content">
+              <div class="card-header">
+                  <i data-lucide="bed" class="icon"></i>
+                  <h3>Habitaciones</h3>
+              </div>
+              <a href="lista.php" class="button">
+                  Ver Habitaciones
+                  <i data-lucide="arrow-right" class="button-icon"></i>
+              </a>
+          </div>
+      </div>
+
+      <!-- Eventos Card -->
+      <div class="card">
+          <div class="card-bg" style="background-image: url('img/music.jpg')">
+              <div class="overlay"></div>
+          </div>
+          <div class="card-content">
+              <div class="card-header">
+                  <i data-lucide="camera" class="icon"></i>
+                  <h3>Eventos</h3>
+              </div>
+              <a href="https://www.youtube.com/watch?v=BZ5_WxpDZlc" class="button">
+                  Ver Video
+                  <i data-lucide="arrow-right" class="button-icon"></i>
+              </a>
+          </div>
+      </div>
+
+      <!-- Gastronomía Card -->
+      <div class="card">
+          <div class="card-bg" style="background-image: url('img/SNACK.png')">
+              <div class="overlay"></div>
+          </div>
+          <div class="card-content">
+              <div class="card-header">
+                  <i data-lucide="utensils" class="icon"></i>
+                  <h3>Gastronomía</h3>
+              </div>
+              <a href="plato.html" class="button">
+                  Ver Menús
+                  <i data-lucide="arrow-right" class="button-icon"></i>
+              </a>
+          </div>
+      </div>
+
+      <!-- Hotel Card -->
+      <div class="card">
+          <div class="card-bg" style="background-image: url('img/hostal.jpg')">
+              <div class="overlay"></div>
+          </div>
+          <div class="card-content">
+              <div class="card-header">
+                  <i data-lucide="video" class="icon"></i>
+                  <h3>Visitanos en tik tok</h3>
+              </div>
+              <a href="https://www.tiktok.com/@hostal_aruni/video/7441910857195343159" class="button">
+                  Ver Video
+                  <i data-lucide="arrow-right" class="button-icon"></i>
+              </a>
+          </div>
+      </div>
+      <div class="card">
+        <div class="card-bg" style="background-image: url('img/tik.jpg')">
+            <div class="overlay"></div>
+        </div>
+        <div class="card-content">
+            <div class="card-header">
+                <i data-lucide="video" class="icon"></i>
+                <h3>Visitanos en tik tok</h3>
+            </div>
+            <a href="https://www.tiktok.com/@hostal_aruni/video/7442681290836413752" class="button">
+                Ver Video
+                <i data-lucide="arrow-right" class="button-icon"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card">
+      <div class="card-bg" style="background-image: url('')">
+          <div class="overlay"></div>
+          <video width="100%" height="100%" autoplay muted loop>
+              <source src="video/hostal.mp4" type="video/mp4">
+          </video>
+      </div>
+      <div class="card-content">
+          <div class="card-header">
+              <i data-lucide="video" class="icon"></i>
+              <h3>Visitanos en Facebook</h3>
+          </div>
+          <a href="https://www.facebook.com/profile.php?id=61561018811624" class="button">
+              Visitar página
+              <i data-lucide="arrow-right" class="button-icon"></i>
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<script>
+  // Initialize Lucide icons
+lucide.createIcons();
+
+// Add smooth scroll behavior
+document.documentElement.style.scrollBehavior = 'smooth';
+
+// Add loading state to buttons when clicked
+document.querySelectorAll('.button').forEach(button => {
+    button.addEventListener('click', function() {
+        this.style.opacity = '0.7';
+        setTimeout(() => {
+            this.style.opacity = '1';
+        }, 200);
+    });
+});
+</script>
+<style>
+    .location-section {
+        background: linear-gradient(to bottom, #ffffff, #f8fafc);
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .location-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+    }
+
+    .location-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .portafolio {
+        font-size: 2.5rem;
+        color: #1e293b;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+
+    .map-container {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .map-container:hover {
+        transform: translateY(-5px);
+    }
+
+    .info-cards {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .icon-container {
+        width: 30px;
+        height: 30px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .info-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-text {
+        color: #64748b;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .portafolio {
+            font-size: 2rem;
+        }
+    }
+
+    .lucide {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+    }
+       /* Estilo para el botón */
+        .scroll-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-to-top-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .scroll-to-top-btn i {
+            font-size: 24px;
+        }
+
+        /* Estilo para la animación de aparición */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .scroll-to-top-btn.show {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+</style>
+
+<section id="ubicaciones" class="location-section">
+    <div class="location-container">
+        <h2 class="portafolio">Nuestra Ubicación</h2>
+        <div class="content-grid">
+            <div class="map-container">
+                <iframe
+                    title="Ubicación de Hostal Aruni"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.7307426697164!2d-65.42561567439675!3d-16.975477088344787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e44300422e3bad%3A0xe7fd36a9c291f680!2sHOSTAL%20ARUNI!5e0!3m2!1ses!2sbo!4v1709596012345!5m2!1ses!2sbo"
+                    width="100%"
+                    height="740"
+                    style="border: 0"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="icon-container" style="background-color: #dbeafe;">
+                        <i data-lucide="map-pin" class="lucide text-blue-600"></i>
+                    </div>
+                    <h3 class="info-title">Dirección</h3>
+                    <p class="info-text">Av. Integración y Av. Cochabamba</p>
+                    <p class="info-text">Villa Tunari-Bolivia</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-container" style="background-color: #dcfce7;">
+                        <i data-lucide="navigation" class="lucide text-green-600"></i>
+                    </div>
+                    <h3 class="info-title">Cómo Llegar</h3>
+                    <p class="info-text">De la Av. Integración doblar a la Avenida Cbba</p>
+                    <p class="info-text">Cerca de la parada Chapare</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-container" style="background-color: #f3e8ff;">
+                        <i data-lucide="clock" class="lucide text-purple-600"></i>
+                    </div>
+                    <h3 class="info-title">Horario de Atención</h3>
+                    <p class="info-text">Mañana 8:00 AM - 9:00 AM</p>
+                    <p class="info-text">Tarde 13:00 PM - 23:59 PM</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-container" style="background-color: #fee2e2;">
+                        <i data-lucide="phone" class="lucide text-red-600"></i>
+                    </div>
+                    <h3 class="info-title">Contacto</h3>
+                    <p class="info-text">Teléfono: +591 71777392</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/lucide"></script>
+<script>
+    lucide.createIcons();
+</script>
+
+<button class="scroll-to-top-btn" id="scrollToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para mostrar y ocultar el botón
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("scrollToTopBtn").classList.add("show");
+            } else {
+                document.getElementById("scrollToTopBtn").classList.remove("show");
+            }
+        }
+
+        // Script para subir al inicio de la página
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        document.getElementById("scrollToTopBtn").onclick = function() {
+            topFunction();
+        };
+    </script>
+
+    <!-- Icono de Font Awesome para la flecha -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
+  <div id="resultado"></div>
+    <footer id="contacto">
+      <div class="footer-content">
+          <div class="contact-info">
+              <h2 class="brand">CONTACTOS:</h2>
+              <p class="brand" style="font-size: 24px; font-weight: bold;"> 71461131</p>
+          </div>
+        <div class="social-media">
+          <a href="https://www.facebook.com/profile.php?id=61561018811624" class="social-media-icon" aria-label="Facebook">
+            <i class='bx bxl-facebook'></i>
+          </a>
+          <a href="https://wa.me/71461131" class="social-media-icon" aria-label="Whatsaap">
+            <i class='bx bxl-whatsapp' ></i>
+          </a>
+          <a href="https://www.tiktok.com/@hostal_aruni" class="social-media-icon" aria-label="Tik Tok" >
+            <i class='bx bxl-tiktok'></i>
+          </a>
+        </div>
+      </div>
+      <div class="line"></div>
+    </footer>
+</body>
+</html>
